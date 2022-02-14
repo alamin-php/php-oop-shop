@@ -45,5 +45,45 @@
                 return false;
             }
         }
+        public function readAllCat(){
+            $query = "SELECT * FROM tbl_category ORDER BY catId DESC";
+            $result = $this->db->select($query);
+            if($result){
+                return $result;
+            }else{
+                return false;
+            }
+        }
+        public function getCatById($id){
+            $query = "SELECT * FROM tbl_category WHERE catId = '$id'";
+            $result = $this->db->select($query);
+            if($result){
+                return $result;
+            }else{
+                return false;
+            }
+        }
+
+        public function updateCategory($catName, $id){
+            $catName = $this->fm->validation($catName);
+            $catName = mysqli_real_escape_string($this->db->link, $catName);
+            $id = mysqli_real_escape_string($this->db->link, $id);
+
+            
+            if(empty($catName)){
+                $msg = "<span class='error'>Category must not be empty !</span>";
+                return $msg;
+            }else{
+                $query = "UPDATE tbl_category SET catName = '$catName' WHERE catId='$id'";
+                $update_row = $this->db->update($query);
+                if($update_row){
+                    $msg = "<span class='success'>Category updated successfully</span>";
+                    return $msg;
+                }else{
+                    $msg = "<span class='error'>Category update fail !</span>";
+                    return $msg;
+                }
+            }
+        }
     }
 ?>

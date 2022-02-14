@@ -1,5 +1,10 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include "../classes/Category.php";?>
+<?php 
+	$cat = new Category();
+	$result = $cat->readAllCat();
+?>
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Category List</h2>
@@ -13,58 +18,31 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php
+							$i=0;
+							if($result){
+								while($category = $result->fetch_assoc()){
+									$i++;
+						?>
 						<tr class="odd gradeX">
-							<td>01</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
+							<td><?php echo $i; ?></td>
+							<td><?php echo $category["catName"]; ?></td>
+							<td><a href="catedit.php?catid=<?php echo $category['catId'] ?>">Edit</a> || <a onclick="return confirm('Are you sure to DELETE?')" href="">Delete</a></td>
 						</tr>
-						<tr class="even gradeC">
-							<td>02</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>03</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>04</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-							<tr class="odd gradeX">
-							<td>05</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>06</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>07</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>08</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
+						<?php } ?>
+						<?php } ?>
 					</tbody>
 				</table>
                </div>
             </div>
         </div>
-<script type="text/javascript">
-	$(document).ready(function () {
-	    setupLeftMenu();
+	<script type="text/javascript">
+		$(document).ready(function () {
+			setupLeftMenu();
 
-	    $('.datatable').dataTable();
-	    setSidebarHeight();
-	});
-</script>
+			$('.datatable').dataTable();
+			setSidebarHeight();
+		});
+	</script>
 <?php include 'inc/footer.php';?>
 
