@@ -1,4 +1,7 @@
-<?php include "../classes/Adminlogin.php";?>
+<?php 
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath."/../classes/Adminlogin.php");
+?>
 <?php 
 	$al = new Adminlogin();
 	if($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["login"])){

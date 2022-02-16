@@ -1,6 +1,9 @@
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include "../classes/Brand.php";?>
+<?php 
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath."/../classes/Brand.php");
+?>
 <?php
     if(!isset($_GET["brandid"]) || $_GET["brandid"] == NULL){
         echo "<script>window.location='brandlist.php'</script>";

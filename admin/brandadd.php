@@ -1,6 +1,10 @@
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include "../classes/Brand.php";?>
+
+<?php 
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath."/../classes/Brand.php");
+?>
 <?php 
     $br = new Brand();
 	if($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["submit"])){

@@ -1,6 +1,9 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include "../classes/Category.php";?>
+<?php 
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath."/../classes/Category.php");
+?>
 
 <?php 
 	$cat = new Category();

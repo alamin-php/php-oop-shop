@@ -62,7 +62,7 @@
 							}
 						?>
 					</td>
-					<td><a href="productview.php?viewPdId=<?php echo $result['productId']; ?>">View</a> || <a href="">Edit</a> || <a onclick="return confirm('Are you sure to delete?')"; href="?delPdId=<?php echo $result['productId']; ?>">Delete</a></td>
+					<td><a href="productview.php?viewPdId=<?php echo $result['productId']; ?>">View</a> || <a href="productedit.php?editPdId=<?php echo $result['productId']; ?>">Edit</a> || <a onclick="return confirm('Are you sure to delete?')"; href="?delPdId=<?php echo $result['productId']; ?>">Delete</a></td>
 				</tr>
 				<?php } ?>
 				<?php } ?>
