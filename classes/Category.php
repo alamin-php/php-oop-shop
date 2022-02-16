@@ -13,7 +13,7 @@
 
         public function addCategory($catName){
             $catName = $this->fm->validation($catName);
-            $catName = mysqli_real_escape_string($this->db->link, $catName);
+            $catName = mysqli_real_escape_string($this->db->link, ucfirst($catName));
 
             $nameChk = $this->checkName($catName);
 
