@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 16, 2022 at 07:15 PM
--- Server version: 8.0.27
--- PHP Version: 7.4.27
+-- Host: 127.0.0.1
+-- Generation Time: Feb 17, 2022 at 12:19 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tbl_admin` (
-  `adminId` int NOT NULL,
+  `adminId` int(11) NOT NULL,
   `adminName` varchar(255) NOT NULL,
   `adminUser` varchar(255) NOT NULL,
   `adminEmail` varchar(150) NOT NULL,
   `adminPass` varchar(32) NOT NULL,
-  `lavel` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `lavel` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_admin`
@@ -50,9 +50,9 @@ INSERT INTO `tbl_admin` (`adminId`, `adminName`, `adminUser`, `adminEmail`, `adm
 --
 
 CREATE TABLE `tbl_brand` (
-  `brandId` int NOT NULL,
+  `brandId` int(11) NOT NULL,
   `brandName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_brand`
@@ -67,13 +67,44 @@ INSERT INTO `tbl_brand` (`brandId`, `brandName`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_cart`
+--
+
+CREATE TABLE `tbl_cart` (
+  `cartId` int(11) NOT NULL,
+  `sId` varchar(255) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `productName` varchar(255) NOT NULL,
+  `price` float(10,2) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_cart`
+--
+
+INSERT INTO `tbl_cart` (`cartId`, `sId`, `productId`, `productName`, `price`, `quantity`, `image`) VALUES
+(1, 'ddg6sprdpbm47r4evivhupqpab', 16, 'It is a long established fact', 445.00, 1, 'upload/20dda5a7e2.jpg'),
+(2, 'ddg6sprdpbm47r4evivhupqpab', 13, 'It is a long established fact that', 955.34, 1, 'upload/a116469077.jpg'),
+(3, 'ddg6sprdpbm47r4evivhupqpab', 12, 'It is a long established fact', 988.25, 2, 'upload/46e63dcb54.png'),
+(4, 'ddg6sprdpbm47r4evivhupqpab', 15, 'It is a long established fact that a reader.', 988.25, 1, 'upload/3f9d599135.png'),
+(5, 'okpr1mtcmttiv7hovuno9ub5fs', 17, 'It is a long established fact that.', 338.90, 1, 'upload/0cb811d92b.jpg'),
+(6, 'okpr1mtcmttiv7hovuno9ub5fs', 14, 'It is a long established fact that a reader.', 1199.90, 1, 'upload/d23e6394da.png'),
+(7, 'ddg6sprdpbm47r4evivhupqpab', 14, 'It is a long established fact that a reader.', 1199.90, 1, 'upload/d23e6394da.png'),
+(8, '35honpkllgh4hoieav8rol34jj', 15, 'It is a long established fact that a reader.', 988.25, 1, 'upload/3f9d599135.png'),
+(9, 'ddg6sprdpbm47r4evivhupqpab', 13, 'It is a long established fact that', 955.34, 8, 'upload/a116469077.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_category`
 --
 
 CREATE TABLE `tbl_category` (
-  `catId` int NOT NULL,
+  `catId` int(11) NOT NULL,
   `catName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_category`
@@ -82,8 +113,7 @@ CREATE TABLE `tbl_category` (
 INSERT INTO `tbl_category` (`catId`, `catName`) VALUES
 (8, 'Desktop'),
 (15, 'Accessories'),
-(16, 'Mobile Phones'),
-(17, 'Ttt');
+(16, 'Mobile Phones');
 
 -- --------------------------------------------------------
 
@@ -92,15 +122,15 @@ INSERT INTO `tbl_category` (`catId`, `catName`) VALUES
 --
 
 CREATE TABLE `tbl_product` (
-  `productId` int NOT NULL,
+  `productId` int(11) NOT NULL,
   `productName` varchar(255) NOT NULL,
-  `catId` int NOT NULL,
-  `brandId` int NOT NULL,
+  `catId` int(11) NOT NULL,
+  `brandId` int(11) NOT NULL,
   `body` text NOT NULL,
   `price` float(10,2) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `type` tinyint NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `type` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_product`
@@ -133,6 +163,12 @@ ALTER TABLE `tbl_brand`
   ADD PRIMARY KEY (`brandId`);
 
 --
+-- Indexes for table `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  ADD PRIMARY KEY (`cartId`);
+
+--
 -- Indexes for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
@@ -152,25 +188,31 @@ ALTER TABLE `tbl_product`
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `adminId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `adminId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_brand`
 --
 ALTER TABLE `tbl_brand`
-  MODIFY `brandId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `catId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `productId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
