@@ -41,6 +41,25 @@ body{
 	float:left;
 	width:33%;
 }
+span.error
+{
+	margin: 8px 0 0 0;
+	padding: 0;
+	height: 1%;
+	font-size: 18px;
+	display: block;
+	color: #FF0000;
+}
+
+span.success
+{
+	margin: 8px 0 0 0;
+	padding: 0;
+	height: 1%;
+	font-size: 18px;
+	
+	color: #7b912b;
+}
 /**** Header Top Right ****/
 .header_top_right{
 	float:left;
