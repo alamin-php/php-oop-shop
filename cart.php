@@ -26,14 +26,19 @@
 								<td><?php echo $i; ?></td>
 								<td><?php echo $result["productName"]; ?></td>
 								<td><img src="admin/<?php echo $result["image"]; ?>" alt=""/></td>
-								<td>Tk. <?php echo $result["price"]; ?></td>
+								<td><?php echo $result["price"]; ?></td>
 								<td>
 									<form action="" method="post">
 										<input type="number" name="quantity" value="<?php echo $result["quantity"]; ?>"/>
 										<input type="submit" name="submit" value="Update"/>
 									</form>
 								</td>
-								<td>Tk. 40000</td>
+								<td>
+									$ <?php 
+										$total = $result["price"] * $result["quantity"];
+										echo $total;
+									?>
+								</td>
 								<td><a href="">X</a></td>
 							</tr>
 							<?php }} ?>
@@ -46,7 +51,7 @@
 							</tr>
 							<tr>
 								<th>VAT : </th>
-								<td>TK. 31500</td>
+								<td>10%</td>
 							</tr>
 							<tr>
 								<th>Grand Total :</th>
