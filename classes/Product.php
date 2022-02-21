@@ -236,4 +236,42 @@ $filepath = realpath(dirname(__FILE__));
                     return false;
                 }
         }
+
+                
+        public function latestFromIphone(){
+            $query = "SELECT * FROM tbl_product WHERE brandId = '2' ORDER BY productId DESC LIMIT 1";
+            $result = $this->db->select($query);
+            if($result){
+                return $result;
+            }else{
+                return false;
+            }
+        }                   
+        public function latestFromISamsung(){
+            $query = "SELECT * FROM tbl_product WHERE brandId = '3' ORDER BY productId DESC LIMIT 1";
+            $result = $this->db->select($query);
+            if($result){
+                return $result;
+            }else{
+                return false;
+            }
+        }                   
+        public function latestFromAsus(){
+            $query = "SELECT * FROM tbl_product WHERE brandId = '6' ORDER BY productId DESC LIMIT 1";
+            $result = $this->db->select($query);
+            if($result){
+                return $result;
+            }else{
+                return false;
+            }
+        }                     
+        public function latestFromCannon(){
+            $query = "SELECT * FROM tbl_product WHERE brandId = '7' ORDER BY productId DESC LIMIT 1";
+            $result = $this->db->select($query);
+            if($result){
+                return $result;
+            }else{
+                return false;
+            }
+        }   
     }

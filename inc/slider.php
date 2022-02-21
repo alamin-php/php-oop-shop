@@ -1,48 +1,75 @@
 <div class="header_bottom">
 		<div class="header_bottom_left">
+			<?php 
+				$getIphone = $pd->latestFromIphone();
+				if($getIphone){
+					while($result = $getIphone->fetch_assoc()){
+			?>
 			<div class="section group">
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						 <a href="details.php"> <img src="images/pic4.png" alt="" /></a>
+						 <a href="details.php"> <img src="admin/<?php echo $result["image"]; ?>" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
-						<h2>Iphone</h2>
-						<p>Lorem ipsum dolor sit amet sed do eiusmod.</p>
-						<div class="button"><span><a href="details.php">Add to cart</a></span></div>
+						<h2><?php echo $result["productName"]; ?></h2>
+						<p><?php echo $fm->textShorten($result["body"],50); ?></p>
+						<div class="button"><span><a href="details.php?proId=<?php echo $result['productId'] ?>">Add to cart</a></span></div>
 				   </div>
-			   </div>			
+				</div>			
+				<?php } } ?>
+
+				<?php 
+				$getIphone = $pd->latestFromISamsung();
+				if($getIphone){
+					while($result = $getIphone->fetch_assoc()){
+				?>
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						  <a href="details.php"><img src="images/pic3.png" alt="" / ></a>
+						 <a href="details.php"> <img src="admin/<?php echo $result["image"]; ?>" alt="" /></a>
 					</div>
-					<div class="text list_2_of_1">
-						  <h2>Samsung</h2>
-						  <p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-						  <div class="button"><span><a href="details.php">Add to cart</a></span></div>
-					</div>
-				</div>
+				    <div class="text list_2_of_1">
+						<h2><?php echo $result["productName"]; ?></h2>
+						<p><?php echo $fm->textShorten($result["body"],50); ?></p>
+						<div class="button"><span><a href="details.php?proId=<?php echo $result['productId'] ?>">Add to cart</a></span></div>
+				   </div>
+				</div>		
+				<?php } } ?>
 			</div>
+
+			<?php 
+				$getIphone = $pd->latestFromAsus();
+				if($getIphone){
+					while($result = $getIphone->fetch_assoc()){
+			?>
 			<div class="section group">
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						 <a href="details.php"> <img src="images/pic3.jpg" alt="" /></a>
+						 <a href="details.php"> <img src="admin/<?php echo $result["image"]; ?>" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
-						<h2>Acer</h2>
-						<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-						<div class="button"><span><a href="details.php">Add to cart</a></span></div>
+						<h2><?php echo $result["productName"]; ?></h2>
+						<p><?php echo $fm->textShorten($result["body"],50); ?></p>
+						<div class="button"><span><a href="details.php?proId=<?php echo $result['productId'] ?>">Add to cart</a></span></div>
 				   </div>
-			   </div>			
+				</div>			
+				<?php } } ?>
+
+				<?php 
+				$getIphone = $pd->latestFromCannon();
+				if($getIphone){
+					while($result = $getIphone->fetch_assoc()){
+				?>
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						  <a href="details.php"><img src="images/pic1.png" alt="" /></a>
+						 <a href="details.php"> <img src="admin/<?php echo $result["image"]; ?>" alt="" /></a>
 					</div>
-					<div class="text list_2_of_1">
-						  <h2>Canon</h2>
-						  <p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-						  <div class="button"><span><a href="details.php">Add to cart</a></span></div>
-					</div>
-				</div>
+				    <div class="text list_2_of_1">
+						<h2><?php echo $result["productName"]; ?></h2>
+						<p><?php echo $fm->textShorten($result["body"],50); ?></p>
+						<div class="button"><span><a href="details.php?proId=<?php echo $result['productId'] ?>">Add to cart</a></span></div>
+				   </div>
+				</div>		
+				<?php } } ?>
 			</div>
 		  <div class="clear"></div>
 		</div>
