@@ -273,5 +273,14 @@ $filepath = realpath(dirname(__FILE__));
             }else{
                 return false;
             }
+        }                        
+        public function getProductByCat($id){
+            $query = "SELECT * FROM tbl_product WHERE catId = '$id'";
+            $result = $this->db->select($query);
+            if($result){
+                return $result;
+            }else{
+                return false;
+            }
         }   
     }
