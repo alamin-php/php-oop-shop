@@ -19,6 +19,7 @@
 	$pd = new Product();
 	$cat = new Category();
 	$ct = new Cart();
+	$cus = new Customer();
 
 ?>
 <!DOCTYPE HTML>

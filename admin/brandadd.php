@@ -7,7 +7,7 @@
 ?>
 <?php 
     $br = new Brand();
-	if($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["submit"])){
+	if($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["register"])){
 		$brandName = $_POST["brandName"];
         $addBrand = $br->addBrand($brandName);
 	}
