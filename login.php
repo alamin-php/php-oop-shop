@@ -1,7 +1,18 @@
 <?php include "inc/header.php"; ?>
 <?php 
+    if(Session::get("cusLogin") != false){
+        header("Location:order.php");
+    }
+?>
+<?php 
+	if($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["login"])){
+        $customerLogin = $cus->customerLogin($_POST);
+	}
+?>
+
+<?php 
 	if($_SERVER["REQUEST_METHOD"] == "POST" AND isset($_POST["createaccount"])){
-        $customerRegister = $cus->register($_POST);
+        $customerRegister = $cus->customerRegister($_POST);
 	}
 ?>
 <div class="main">
@@ -9,14 +20,19 @@
         <div class="login_panel">
             <h3>Existing Customers</h3>
             <p>Sign in with the form below.</p>
-            <form action="hello" method="get" id="member">
-                <input name="username" type="text" placeholder="Name">
+            <?php 
+                if(isset($customerLogin)){
+                    echo $customerLogin;
+                }
+            ?>
+            <form action="" method="post">
+                <input name="email" type="text" placeholder="Email address">
                 <input name="password" type="password" placeholder="Passwod">
+                <p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p>
+
+                    <div><input type="submit" class="btn-sub" name="login" value="Login"></div>
+
             </form>
-            <p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p>
-            <div class="buttons">
-                <div><button class="grey">Sign In</button></div>
-            </div>
         </div>
         <div class="register_account">
             <h3>Register New Account 			

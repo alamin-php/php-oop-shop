@@ -15,7 +15,7 @@
 ?>
 <?php 
 	if(!isset($_GET['id'])){
-		echo "<meta http-equiv='refresh' content='0;URL=?id=alamin' />";
+		echo "<meta http-equiv='refresh' content='0;URL=?id=refresh' />";
 	}
 ?>
  <div class="main">
@@ -105,7 +105,7 @@
 								</td>
 							</tr>
 					   </table>
-					   <?php }else{echo "Cart Empty! Please Shop Now !";} ?>
+					   <?php }else{header("Location:index.php");} ?>
 					</div>
 					<div class="shopping">
 						<div class="shopleft">

@@ -74,7 +74,24 @@
 							</a>
 						</div>
 			      </div>
-		   <div class="login"><a href="login.php">Login</a></div>
+		   <div class="login">
+				<?php 
+					if(isset($_GET["action"]) AND $_GET["action"] == "logout"){
+					Session::destroy();
+					}
+				?>
+				<?php 
+					if(Session::get("cusLogin") == false){
+						?>
+						<a href="login.php">Login</a>
+						<?php
+					}else{
+						?>
+						<a onclick="return confirm('Are you sure to LOGOUT?')" href="?action=logout">Logout</a>
+						<?php
+					}
+				?>
+			</div>
 		 <div class="clear"></div>
 	 </div>
 	 <div class="clear"></div>
