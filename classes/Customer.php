@@ -76,5 +76,15 @@ include_once ($filepath."/../helpers/Format.php");
             }
         }
 
+        public function getCustomerData($id){
+            $query = "SELECT * FROM tbl_customer WHERE id = '$id'";
+            $result = $this->db->select($query);
+            if($result){
+                return $result;
+            }else{
+                return false;
+            }
+        }
+
     }
 ?>
