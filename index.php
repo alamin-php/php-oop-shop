@@ -32,7 +32,6 @@
     		<div class="clear"></div>
     	</div>
 			<div class="section group">
-			<div class="section group">
 			  <?php 
 			 	$getFpd = $pd->getNewProduct();
 				 if($getFpd){
@@ -46,7 +45,6 @@
 				     <div class="button"><span><a href="details.php?proId=<?php echo $result['productId'] ?>" class="details">Details</a></span></div>
 				</div>
 				<?php }} ?>
-			</div>
 			</div>
     </div>
  </div>
