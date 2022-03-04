@@ -37,9 +37,9 @@
         <div class="register_account">
             <h3>Register New Account 			
 				<?php 
-				if(isset($customerRegister)){
-					echo $customerRegister;
-				}
+                    if(isset($customerRegister)){
+                        echo $customerRegister;
+                    }
 				?>
 			</h3>
             <form action="" method="post">

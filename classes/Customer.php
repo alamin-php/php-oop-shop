@@ -66,6 +66,47 @@ include_once ($filepath."/../helpers/Format.php");
             }
         }
 
+        public function updateCustomer($data, $cusId){
+            $name = mysqli_real_escape_string($this->db->link, $data["name"]);
+            $city = mysqli_real_escape_string($this->db->link, $data["city"]);
+            $zipcode = mysqli_real_escape_string($this->db->link, $data["zipcode"]);
+            $address = mysqli_real_escape_string($this->db->link, $data["address"]);
+            $country = mysqli_real_escape_string($this->db->link, $data["country"]);
+            $phone = mysqli_real_escape_string($this->db->link, $data["phone"]);
+            $email = mysqli_real_escape_string($this->db->link, $data["email"]);
+
+            if($name == "" || $city == "" || $zipcode == "" || $address == "" || $country == "" || $phone == "" || $email == ""){
+                $msg = "<span class='error'>Fiend name must not be empty!</span>";
+                return $msg;
+            }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $msg = "<span class='error'>This Email Not Valid!</span>";
+                return $msg;
+            }else{
+
+                $query = "UPDATE
+                `tbl_customer`
+            SET
+                `name` = '$name',
+                `address` = '$address',
+                `city` = '$city',
+                `country` = '$country',
+                `zipcode` = '$zipcode',
+                `phone` = '$phone',
+                `email` = '$email'
+            WHERE
+                id = '$cusId'";
+
+                $update_row = $this->db->update($query);
+                if($update_row){
+                    $msg = "<span class='success'>Profile Update Successfully!</span>";
+                    return $msg;
+                }else{
+                    $msg = "<span class='error'>Profile Update Faile!</span>";
+                    return $msg;
+                }
+            }
+        }
+
         public function emailCheck($email){
             $query = "SELECT * FROM tbl_customer WHERE email = '$email'";
             $result = $this->db->select($query);
